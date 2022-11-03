@@ -1,6 +1,11 @@
 public class Add implements Order{
     @Override
-    public void execute() {
+    public void executeTitle() {
+
+    }
+
+    @Override
+    public void executeBookmark() {
 
     }
 }

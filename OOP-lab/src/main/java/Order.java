@@ -1,3 +1,4 @@
 public interface Order {
-    void execute();
+    void executeTitle();
+    void executeBookmark();
 }
