@@ -1,4 +1,4 @@
-public interface Iterater {
+public interface Iterator {
     Boolean hasNest();
     Object nest();
 }

@@ -1,7 +1,7 @@
 public class FileTree {
 
 
-    private static class deepFirstIterater implements Iterater {
+    private static class deepFirstIterator implements Iterator {
 
         @Override
         public Boolean hasNest() {
