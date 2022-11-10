@@ -3,10 +3,17 @@ import java.util.ArrayList;
 public class FileNode {
     private int depth;
     private String title;
-    private String bookmarkName;
-    private String bookmarkLink;
+    private String link;
     private FileNode fatherNode;
     private ArrayList<FileNode> childNode;
+
+    public FileNode() {
+        this.depth = 0;
+        this.title = "";
+        this.link = "";
+        this.fatherNode = null;
+        this.childNode = new ArrayList<>();
+    }
 
     public int getDepth() {
         return depth;
@@ -24,16 +31,12 @@ public class FileNode {
         this.title = title;
     }
 
-    public String getBookmarkName() {
-        return bookmarkName;
+    public String getLink() {
+        return link;
     }
 
-    public void setBookmarkName(String bookmarkName) {
-        this.bookmarkName = bookmarkName;
-    }
-
-    public String getBookmarkLink() {
-        return bookmarkLink;
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public FileNode getFatherNode() {
@@ -44,26 +47,24 @@ public class FileNode {
         this.fatherNode = fatherNode;
     }
 
-    public void setBookmarkLink(String bookmarkLink) {
-        this.bookmarkLink = bookmarkLink;
+    public void setChildNode(ArrayList<FileNode> childNode) {
+        this.childNode = childNode;
+    }
+
+    public ArrayList<FileNode> getChildNode() {
+        return childNode;
     }
 
     public void addChildNode(FileNode fileNode) {
         this.childNode.add(fileNode);
     }
 
-    public void deleteChildNode(FileNode fileNode) {
-        if (this.childNode.contains(fileNode)) {
-            childNode.removeIf(fileNode1 -> fileNode1.equals(fileNode));
-        }
+    public void deleteChildNode(String title) {
+        childNode.removeIf(fileNode -> fileNode.title.equals(title));
     }
 
-    public void deleteTitle() {
-        this.title = "";
-    }
 
-    public void deleteBookmark() {
-        this.bookmarkName = "";
-        this.bookmarkLink = "";
+    public void deleteFatherNode() {
+        this.fatherNode = null;
     }
 }

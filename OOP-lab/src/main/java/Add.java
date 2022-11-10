@@ -12,7 +12,7 @@ public class Add implements Order{
     }
 
     @Override
-    public void executeBookmark(String bookmarkName,String bookmarkLink) {
+    public void executeLink(String link) {
 
     }
 

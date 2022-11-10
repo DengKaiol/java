@@ -6,7 +6,7 @@ public class Delete implements Order{
     }
 
     @Override
-    public void executeBookmark(String bookmarkName,String bookmarkLink) {
+    public void executeLink(String link) {
 
     }
 }
