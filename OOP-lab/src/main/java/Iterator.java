@@ -1,4 +1,4 @@
 public interface Iterator {
-    Boolean hasNest();
+    Boolean hasNext();
     Object next();
 }

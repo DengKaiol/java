@@ -1,24 +1,17 @@
-public class Add implements Order{
+public class Add implements Order {
+
     private FileNode currentNode;
     private FileNode fatherNode;
 
-    Add(FileNode fatherNode){
-        this.fatherNode = fatherNode;
+
+    public FileNode getCurrentNode() {
+        return currentNode;
     }
 
-    @Override
-    public void executeTitle(String title) {
-        this.addTitle(title);
+    public void setCurrentNode(FileNode currentNode) {
+        this.currentNode = currentNode;
     }
 
-    @Override
-    public void executeLink(String link) {
-
-    }
-
-    public void addTitle(String title){
-        this.currentNode.setTitle(title);
-    }
 
     public FileNode getFatherNode() {
         return fatherNode;
@@ -26,5 +19,15 @@ public class Add implements Order{
 
     public void setFatherNode(FileNode fatherNode) {
         this.fatherNode = fatherNode;
+    }
+
+    @Override
+    public void execute() {
+
+    }
+
+    @Override
+    public void reverseExecute() {
+
     }
 }

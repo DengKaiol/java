@@ -17,6 +17,7 @@ public class FileTreeTest {
         fileNode3.setTitle("3");
         fileNode4.setTitle("4");
         fileNode5.setTitle("5");
+        fileNode5.setFatherNode(fileNode2);
         fileNode1.addChildNode(fileNode3);
         fileNode2.addChildNode(fileNode5);
         root.addChildNode(fileNode1);
@@ -27,8 +28,10 @@ public class FileTreeTest {
     @Test
     public void deepFirstIterator(){
         FileTree tree = new FileTree(root);
+        tree.addNode("6","","3");
+        tree.deleteNode("5");
         FileTree.DeepFirstIterator iterator = new FileTree.DeepFirstIterator(tree.getRootNode());
-        while (iterator.hasNest()) {
+        while (iterator.hasNext()) {
             System.out.println(iterator.next().getTitle());
         }
     }
