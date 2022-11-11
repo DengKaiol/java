@@ -3,10 +3,12 @@ import java.util.Stack;
 public class FileTree {
     private FileNode rootNode;
     private Stack<Order> orders;
+    private Stack<Order> redoOrders;
 
     public FileTree(FileNode fileNode) {
         this.rootNode = fileNode;
         this.orders = new Stack<>();
+        this.redoOrders = new Stack<>();
     }
 
     public FileNode getRootNode() {
@@ -28,6 +30,7 @@ public class FileTree {
                 add.setFatherNode(currentNode);
                 add.setCurrentNode(node);
                 this.orders.push(add);
+                this.redoOrders.clear();
                 break;
             }
         }
@@ -43,11 +46,27 @@ public class FileTree {
                 delete.setCurrentNode(currentNode);
                 delete.setFatherNode(currentNode.getFatherNode());
                 this.orders.push(delete);
+                this.redoOrders.clear();
                 break;
             }
         }
     }
 
+    public void undo() {
+        Order order = this.orders.pop();
+        order.reverseExecute();
+        this.redoOrders.push(order);
+    }
+
+    public void redo() {
+        if (!this.redoOrders.isEmpty()) {
+            Order order = this.redoOrders.pop();
+            order.execute();
+            this.orders.push(order);
+        }
+    }
+
+    //    深度优先迭代器
     public static class DeepFirstIterator implements Iterator {
 
         private Stack<FileNode> stack = new Stack<>();

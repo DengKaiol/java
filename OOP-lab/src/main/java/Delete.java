@@ -1,5 +1,6 @@
 public class Delete implements Order {
     private FileNode currentNode;
+    private FileNode fatherNode;
 
     public FileNode getCurrentNode() {
         return currentNode;
@@ -17,17 +18,14 @@ public class Delete implements Order {
         this.fatherNode = fatherNode;
     }
 
-    private FileNode fatherNode;
-
-
 
     @Override
     public void execute() {
-
+        this.fatherNode.deleteChildNode(this.currentNode.getTitle());
     }
 
     @Override
     public void reverseExecute() {
-
+        this.fatherNode.addChildNode(this.currentNode);
     }
 }

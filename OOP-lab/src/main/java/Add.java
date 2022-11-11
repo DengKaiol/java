@@ -23,11 +23,11 @@ public class Add implements Order {
 
     @Override
     public void execute() {
-
+        this.fatherNode.addChildNode(this.currentNode);
     }
 
     @Override
     public void reverseExecute() {
-
+        this.fatherNode.deleteChildNode(this.currentNode.getTitle());
     }
 }

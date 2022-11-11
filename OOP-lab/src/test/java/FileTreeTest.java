@@ -30,6 +30,8 @@ public class FileTreeTest {
         FileTree tree = new FileTree(root);
         tree.addNode("6","","3");
         tree.deleteNode("5");
+        tree.undo();
+        tree.redo();
         FileTree.DeepFirstIterator iterator = new FileTree.DeepFirstIterator(tree.getRootNode());
         while (iterator.hasNext()) {
             System.out.println(iterator.next().getTitle());
