@@ -1,6 +1,9 @@
 import java.util.Stack;
 
 public class FileTree {
+
+
+    private String name;
     private FileNode rootNode;
     private Stack<Order> orders;
     private Stack<Order> redoOrders;
@@ -11,8 +14,27 @@ public class FileTree {
         this.redoOrders = new Stack<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public FileNode getRootNode() {
         return rootNode;
+    }
+
+    public void setRootNodeTitle(String title){
+        this.rootNode.setTitle(title);
+    }
+
+    public void clear(){
+        this.name = "";
+        this.orders.clear();
+        this.redoOrders.clear();
+        this.rootNode.clear();
     }
 
     public void addNode(String title, String link, String fatherTitle) {
@@ -42,9 +64,11 @@ public class FileTree {
         while (iterator.hasNext()) {
             FileNode currentNode = iterator.next();
             if (currentNode.getTitle().equals(title)) {
-                currentNode.getFatherNode().deleteChildNode(title);
+                if (currentNode.getFatherNode() != null){
+                    currentNode.getFatherNode().deleteChildNode(title);
+                    delete.setFatherNode(currentNode.getFatherNode());
+                }
                 delete.setCurrentNode(currentNode);
-                delete.setFatherNode(currentNode.getFatherNode());
                 this.orders.push(delete);
                 this.redoOrders.clear();
                 break;

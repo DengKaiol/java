@@ -15,6 +15,11 @@ public class FileNode {
         this.childNode = new ArrayList<>();
     }
 
+    public void clear(){
+        this.title = "";
+        this.childNode.clear();
+    }
+
     public int getDepth() {
         return depth;
     }
